@@ -10,10 +10,10 @@ export const useFetch = () => {
         const response = await fetch(url);
         const data = await response.json();
 
-        paginate(data);
-
-        setData(data);
-        setLoading(false);
+        if (data.length > 0) {
+            setData(paginate(data));
+            setLoading(false);
+        }
     };
 
     useEffect(() => {
